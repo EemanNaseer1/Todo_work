@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project4/home_screen.dart';
 
 class AddScreen extends StatefulWidget {
   const AddScreen({super.key});
@@ -8,10 +9,10 @@ class AddScreen extends StatefulWidget {
 }
 
 class _AddScreenState extends State<AddScreen> {
+  final List<String> todos = [];
   final TextEditingController desciptionController = TextEditingController();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController timeController = TextEditingController();
-  final List<String> todos = [];
   final TextEditingController textController = TextEditingController();
 
   void addTodoItem(String task) {
@@ -21,6 +22,13 @@ class _AddScreenState extends State<AddScreen> {
       });
       textController.clear();
     }
+  }
+
+  void add() {
+    addTodoItem(textController.text);
+    addTodoItem(timeController.text);
+    addTodoItem(titleController.text);
+    addTodoItem(desciptionController.text);
   }
 
   void removeTodoItem(int index) {
@@ -175,16 +183,12 @@ class _AddScreenState extends State<AddScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            addTodoItem(textController.text);
-            addTodoItem(titleController.text);
-            addTodoItem(timeController.text);
-            addTodoItem(desciptionController.text);
-          });
-        },
-        child: Icon(Icons.add),
-      ),
+          onPressed: () async {
+            setState(() {
+              add();
+            });
+          },
+          child: Icon(Icons.add)),
     );
   }
 }

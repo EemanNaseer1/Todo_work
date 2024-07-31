@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project4/add_screen.dart';
 import 'package:project4/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -89,7 +88,7 @@ class SplashScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomeScreen([AddScreen()])));
+                            builder: (context) =>HomeScreen()));
                   },
                   child: Text(
                     "Create a Note",
